@@ -30,6 +30,6 @@ io.on('connection', (socket) => {
 // Export io to be used in controllers
 export { io };
 
-server.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+server.listen(Number(PORT), '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`);
 });
