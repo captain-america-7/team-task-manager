@@ -38,11 +38,19 @@ export const getStats = async (req: AuthRequest, res: Response) => {
       IN_PROGRESS: 0,
       COMPLETED: 0,
     };
-...
+
+    taskStats.forEach((stat) => {
+      if (stat.status in formattedTaskStats) {
+        formattedTaskStats[stat.status as keyof typeof formattedTaskStats] = stat._count;
+      }
+    });
+
     res.json({
       projectCount,
       taskStats: formattedTaskStats,
       overdueCount,
     });
   } catch (error) {
-...
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
