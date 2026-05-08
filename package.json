@@ -13,7 +13,8 @@
     "build:frontend": "npm run build --workspace=frontend",
     "build": "npm run build:backend && npm run build:frontend",
     "start:backend": "npm run start --workspace=backend",
-    "start:frontend": "npm run start --workspace=frontend"
+    "start:frontend": "npm run start --workspace=frontend",
+    "start": "npm run start:backend"
   },
   "engines": {
     "node": ">=18.0.0"
