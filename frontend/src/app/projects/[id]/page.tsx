@@ -9,7 +9,6 @@ import { useSocket } from '@/hooks/useSocket';
 import { useEffect, useState } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
@@ -95,7 +94,7 @@ export default function ProjectPage() {
       <div className="flex-1 min-w-[300px] bg-gray-100 p-4 rounded-lg">
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-bold text-gray-700">{title}</h3>
-          <Badge variant="secondary">{columnTasks.length}</Badge>
+          <span className="bg-white px-2 py-0.5 rounded text-xs font-semibold">{columnTasks.length}</span>
         </div>
         <div className="space-y-4">
           {columnTasks.map((task: any) => (
@@ -114,9 +113,13 @@ export default function ProjectPage() {
                 </div>
                 <p className="text-sm text-gray-500 mb-4">{task.description}</p>
                 <div className="flex justify-between items-center">
-                  <Badge variant={task.priority === 'HIGH' ? 'destructive' : task.priority === 'MEDIUM' ? 'default' : 'secondary'}>
+                  <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                    task.priority === 'HIGH' ? 'bg-red-100 text-red-600' : 
+                    task.priority === 'MEDIUM' ? 'bg-blue-100 text-blue-600' : 
+                    'bg-gray-100 text-gray-600'
+                  }`}>
                     {task.priority}
-                  </Badge>
+                  </span>
                   <div className="flex space-x-1">
                     {status !== 'TODO' && (
                       <Button
