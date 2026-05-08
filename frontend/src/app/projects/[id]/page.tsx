@@ -172,8 +172,8 @@ export default function ProjectPage() {
             </div>
             <div className="flex items-center space-x-2">
               <Dialog open={isInviteOpen} onOpenChange={setIsInviteOpen}>
-                <DialogTrigger asChild>
-                  <Button variant="outline">Invite</Button>
+                <DialogTrigger render={<Button variant="outline" />}>
+                  Invite
                 </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
