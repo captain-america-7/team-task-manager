@@ -36,7 +36,7 @@ export const createProject = async (req: AuthRequest, res: Response) => {
 };
 
 export const deleteProject = async (req: AuthRequest, res: Response) => {
-  const { id } = req.params;
+  const id = req.params.id as string;
 
   try {
     await prisma.project.delete({ where: { id } });
@@ -47,7 +47,7 @@ export const deleteProject = async (req: AuthRequest, res: Response) => {
 };
 
 export const addMember = async (req: AuthRequest, res: Response) => {
-  const { projectId } = req.params;
+  const projectId = req.params.projectId as string;
   const { email } = req.body;
 
   try {

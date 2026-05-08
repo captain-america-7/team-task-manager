@@ -40,7 +40,7 @@ export const createTask = async (req: AuthRequest, res: Response) => {
 };
 
 export const updateTask = async (req: AuthRequest, res: Response) => {
-  const { id } = req.params;
+  const id = req.params.id as string;
   const { title, description, priority, status, assignedUserId } = req.body;
 
   try {
@@ -64,7 +64,7 @@ export const updateTask = async (req: AuthRequest, res: Response) => {
 };
 
 export const deleteTask = async (req: AuthRequest, res: Response) => {
-  const { id } = req.params;
+  const id = req.params.id as string;
 
   try {
     const task = await prisma.task.findUnique({ where: { id } });
